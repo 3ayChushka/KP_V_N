@@ -126,7 +126,7 @@ void main()
 			int index;
 			printf("Выберите строку которую хотите удалить:");
 			scanf("%d", &index);
-			if (index >= size || index < 0) { 
+			if (index > size || index < 0) { 
 				puts("Такой строки не существует"); 
 				break;
 			}
@@ -282,7 +282,10 @@ int* searchUser(ITEM_t* point, char* name, int size) {
 		}
 	}
 	if (count > 0) return arr;
-		else return NULL;
+	else { 
+		free(arr);
+		return arr; 
+	}
 }
 
 int searchTime(ITEM_t* point, struct tm time_search, int size) {
