@@ -314,21 +314,13 @@ ITEM_t* del(ITEM_t* point, int size, int index)
 
 ITEM_t* sort_insert(ITEM_t* point, int size) {
 	
-	int q = 1;
 	ITEM_t temp;
 	qsort(point, size, sizeof(ITEM_t), compare_Data);  /*Сортировка по дате*/
 
-	for (int i = 0; i < size; i++)
-	{
-		if (point[i].t.tm_year == point[i].t.tm_year && point[i].t.tm_mon == point[i].t.tm_mon && point[i].t.tm_mday == point[i].t.tm_mday) q++;
-		else { point[i].sort = q;
-		q = 1;
-		}
-	}
 
 	for (int i = 0; i < size-1; i++)
 	{
-		if (point[i].sort == point[i + 1].sort)
+		if (point[i].t.tm_year == point[i + 1].t.tm_year && point[i].t.tm_mon == point[i + 1].t.tm_mon && point[i].t.tm_mday == point[i + 1].t.tm_mday)
 		{
 			if (strcmp(point[i].reason, point[i + 1].reason) == 0) continue;
 			else if (strcmp(point[i].reason, point[i + 1].reason) == 1) {
