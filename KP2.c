@@ -326,9 +326,9 @@ ITEM_t* sort_insert(ITEM_t* point, int size) {
 		q = 1;
 		}
 	}
-	qsort(point, size, sizeof(ITEM_t), compare_num); //сортировка по количеству записей на дату
+	qsort(point, size, sizeof(ITEM_t), compare_num);
 
-	for (int i = 0; i < size; i++) //сортировка причин
+	for (int i = 0; i < size; i++)
 	{
 		if (point[i].sort == point[i + 1].sort)
 		{
