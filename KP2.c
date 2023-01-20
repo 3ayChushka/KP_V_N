@@ -29,7 +29,6 @@ ITEM_t* del(ITEM_t* point, int size, int index);  /*Удаление запис�
 ITEM_t* sort_insert(ITEM_t* point, int size);  /*Сортировка*/
 void tabl(); /*Таблица*/
 int compare_Data(const void* av, const void* bv);
-int compare_num(const void* av, const void* bv);
 
 void main()
 {
@@ -326,9 +325,8 @@ ITEM_t* sort_insert(ITEM_t* point, int size) {
 		q = 1;
 		}
 	}
-	qsort(point, size, sizeof(ITEM_t), compare_num);
 
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < size-1; i++)
 	{
 		if (point[i].sort == point[i + 1].sort)
 		{
@@ -359,14 +357,6 @@ int compare_Data(const void* av, const void *bv)
 	if (a->t.tm_mon < b->t.tm_mon)return -1;
 	if (a->t.tm_mday > b->t.tm_mday)return 1;
 	if (a->t.tm_mday < b->t.tm_mday)return -1;
-	return 0;
-}
-
-int compare_num(const void* av, const void* bv)
-{
-	const ITEM_t* a = av, * b = bv;
-	if (a->sort > b->sort)return-1;
-	if (a->sort < b->sort) return 1;
 	return 0;
 }
 
